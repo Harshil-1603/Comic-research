@@ -1,189 +1,230 @@
 """
-Ablation Study Experiments
-Run 4 configs:
+Ablation Study — plan §14: Run 4 configurations.
 1. Image only
 2. Image + Text
 3. Image + Color
 4. Image + Text + Color
 
-Log to experiments/results.csv
+Results logged to experiments/results.csv.
+
+Usage:
+    python experiments/run_ablations.py [--epochs 5]
 """
+import sys
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 import pandas as pd
 import numpy as np
 from torch.utils.data import DataLoader
 from torchvision import transforms
-from sklearn.metrics import accuracy_score, f1_score
-import sys
-import os
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
-
+import config
+from utils.reproducibility import seed_all
 from data.dataset import ComicDataset
 from features.color_features import hsv_hist
 from models.image_encoder import ImageEncoder
 from models.text_encoder import TextEncoder
-from models.fusion_model import FusionModel
 from utils.collate import collate
 
+import argparse
 
-device = "cuda" if torch.cuda.is_available() else "cpu"
 
+# ── Ablation-specific fusion model ──────────────────────────────────────────
 
 class AblationFusionModel(nn.Module):
-    """Fusion model with configurable modalities"""
-    def __init__(self, use_text=True, use_color=True, d_img=512, d_txt=768, d_col=48, n_cls=5):
+    """MLP fusion with configurable active modalities."""
+
+    def __init__(self, use_text=True, use_color=True,
+                 d_img=512, d_txt=768, d_col=48, n_cls=None):
         super().__init__()
-        self.use_text = use_text
+        n_cls = n_cls or config.N_CLS
+        self.use_text  = use_text
         self.use_color = use_color
-        
+
         input_dim = d_img
-        if use_text:
-            input_dim += d_txt
-        if use_color:
-            input_dim += d_col
-            
+        if use_text:  input_dim += d_txt
+        if use_color: input_dim += d_col
+
         self.net = nn.Sequential(
             nn.Linear(input_dim, 256),
             nn.ReLU(),
             nn.Dropout(0.2),
-            nn.Linear(256, n_cls)
+            nn.Linear(256, n_cls),
         )
-    
+
     def forward(self, img, txt, col):
-        import torch.nn.functional as F
-        x = F.normalize(img, dim=-1)
-        parts = [x]
-        if self.use_text:
-            z = F.normalize(txt, dim=-1)
-            parts.append(z)
-        if self.use_color:
-            parts.append(col)
-        fused = torch.cat(parts, dim=1)
-        return self.net(fused)
+        parts = [F.normalize(img, dim=-1)]
+        if self.use_text:  parts.append(F.normalize(txt, dim=-1))
+        if self.use_color: parts.append(col)
+        return self.net(torch.cat(parts, dim=1))
 
 
-def run_experiment(config_name, use_text, use_color, epochs=5):
-    """Run a single ablation experiment"""
+# ── Helpers ──────────────────────────────────────────────────────────────────
+
+tfm = transforms.Compose([
+    transforms.ToPILImage(),
+    transforms.Resize((224, 224)),
+])
+
+
+def to_pil(batch_imgs):
+    return [tfm(img) for img in batch_imgs]
+
+
+def make_loader(csv_path, split, img_dir, batch_size):
+    import pandas as pd
+    df = pd.read_csv(csv_path)
+    has_split = "split" in df.columns
+    kw = dict(split=split) if has_split and split else {}
+    ds = ComicDataset(csv_path, img_dir, **kw)
+    return DataLoader(ds, batch_size=batch_size, shuffle=True,
+                      collate_fn=collate, num_workers=0)
+
+
+# ── Single experiment ─────────────────────────────────────────────────────
+
+def run_experiment(config_name, use_text, use_color, epochs,
+                   train_loader, val_loader, device):
     print(f"\n{'='*60}")
     print(f"Running: {config_name}")
-    print(f"Use Text: {use_text}, Use Color: {use_color}")
+    print(f"  use_text={use_text}  use_color={use_color}  epochs={epochs}")
     print(f"{'='*60}")
-    
-    # Transforms
-    tfm = transforms.Compose([
-        transforms.ToPILImage(),
-        transforms.Resize((224, 224)),
-    ])
-    
-    def to_pil(batch_imgs):
-        return [tfm(img) for img in batch_imgs]
-    
-    # Load data
-    ds = ComicDataset("data/annotations.csv", "data/processed", transforms=None)
-    dl = DataLoader(ds, batch_size=16, shuffle=True, collate_fn=collate, num_workers=0)
-    
-    # Initialize encoders and model
+
+    seed_all(config.SEED)
+
     img_enc = ImageEncoder(device)
     txt_enc = TextEncoder(device) if use_text else None
-    model = AblationFusionModel(use_text=use_text, use_color=use_color).to(device)
+    model   = AblationFusionModel(use_text=use_text, use_color=use_color).to(device)
+
+    opt  = torch.optim.Adam(model.parameters(), lr=config.LEARNING_RATE)
     
-    opt = torch.optim.Adam(model.parameters(), lr=1e-4)
-    crit = nn.CrossEntropyLoss()
+    # Calculate weights dynamically from train_loader's dataframe to account for class imbalance
+    df = train_loader.dataset.df
+    counts = df["emotion"].value_counts()
+    weights = torch.zeros(config.N_CLS, dtype=torch.float32)
+    for emotion, idx in config.LABEL_MAP.items():
+        if counts.get(emotion, 0) > 0:
+            weights[idx] = len(df) / (config.N_CLS * counts[emotion])
     
-    # Training loop
+    crit = nn.CrossEntropyLoss(weight=weights.to(device))
+
+    # ── Training ────────────────────────────────────────────────────────────
     for epoch in range(epochs):
         model.train()
-        epoch_loss = 0
-        for imgs, texts, ys in dl:
+        epoch_loss = 0.0
+        for imgs, texts, ys in train_loader:
             pil_imgs = to_pil(imgs)
             img_feat = img_enc(pil_imgs)
-            
-            if use_text:
-                txt_feat = txt_enc(texts)
-            else:
-                txt_feat = torch.zeros(img_feat.size(0), 768).to(device)
-            
-            if use_color:
-                col_feat = torch.stack([hsv_hist(img) for img in imgs]).to(device)
-            else:
-                col_feat = torch.zeros(img_feat.size(0), 48).to(device)
-            
-            y = torch.tensor(ys).to(device)
-            
-            pred = model(img_feat, txt_feat, col_feat)
-            loss = crit(pred, y)
-            
+
+            txt_feat = (txt_enc(texts) if use_text
+                        else torch.zeros(img_feat.size(0), 768, device=device))
+            col_feat = (torch.stack([hsv_hist(img) for img in imgs]).to(device) if use_color
+                        else torch.zeros(img_feat.size(0), 48, device=device))
+
+            y = ys.to(device)           # already a stacked LongTensor from collate
+
+            loss = crit(model(img_feat, txt_feat, col_feat), y)
             opt.zero_grad()
             loss.backward()
             opt.step()
             epoch_loss += loss.item()
-        
-        print(f"Epoch {epoch}: Loss = {epoch_loss/len(dl):.4f}")
-    
-    # Evaluation
+
+        print(f"  epoch {epoch}: loss={epoch_loss/max(len(train_loader),1):.4f}")
+
+    # ── Evaluation on val split ──────────────────────────────────────────────
     model.eval()
     y_true, y_pred = [], []
+    eval_loader = val_loader if val_loader else train_loader
+
     with torch.no_grad():
-        for imgs, texts, ys in dl:
+        for imgs, texts, ys in eval_loader:
             pil_imgs = to_pil(imgs)
             img_feat = img_enc(pil_imgs)
-            
-            if use_text:
-                txt_feat = txt_enc(texts)
-            else:
-                txt_feat = torch.zeros(img_feat.size(0), 768).to(device)
-            
-            if use_color:
-                col_feat = torch.stack([hsv_hist(img) for img in imgs]).to(device)
-            else:
-                col_feat = torch.zeros(img_feat.size(0), 48).to(device)
-            
-            outputs = model(img_feat, txt_feat, col_feat)
-            preds = torch.argmax(outputs, dim=1).cpu().numpy()
-            y_true.extend(ys)
+
+            txt_feat = (txt_enc(texts) if use_text
+                        else torch.zeros(img_feat.size(0), 768, device=device))
+            col_feat = (torch.stack([hsv_hist(img) for img in imgs]).to(device) if use_color
+                        else torch.zeros(img_feat.size(0), 48, device=device))
+
+            preds = model(img_feat, txt_feat, col_feat).argmax(1).cpu().numpy()
+            y_true.extend(ys.numpy())
             y_pred.extend(preds)
-    
-    acc = accuracy_score(y_true, y_pred)
-    f1 = f1_score(y_true, y_pred, average='macro')
-    
-    print(f"\nResults: Accuracy={acc:.4f}, F1={f1:.4f}")
-    
+
+    y_true = np.array(y_true)
+    y_pred = np.array(y_pred)
+
+    # Use only labels present in this experiment's data (avoids sklearn ValueError)
+    present = sorted(set(y_true) | set(y_pred))
+
+    acc  = accuracy_score(y_true, y_pred)
+    f1   = f1_score(y_true, y_pred, average="macro", zero_division=0, labels=present)
+    prec = precision_score(y_true, y_pred, average="macro", zero_division=0, labels=present)
+    rec  = recall_score(y_true, y_pred, average="macro", zero_division=0, labels=present)
+
+    print(f"\n  Results: acc={acc:.4f}  prec={prec:.4f}  rec={rec:.4f}  f1={f1:.4f}")
+
     return {
-        'config': config_name,
-        'use_text': use_text,
-        'use_color': use_color,
-        'accuracy': acc,
-        'f1_macro': f1
+        "config": config_name,
+        "use_text":  use_text,
+        "use_color": use_color,
+        "accuracy":  acc,
+        "precision_macro": prec,
+        "recall_macro":    rec,
+        "f1_macro":        f1,
     }
 
 
+# ── Main ─────────────────────────────────────────────────────────────────────
+
 def main():
-    """Run all ablation experiments"""
+    p = argparse.ArgumentParser(description="Ablation study")
+    p.add_argument("--epochs", type=int, default=5)
+    p.add_argument("--device", type=str,
+                   default="cuda" if torch.cuda.is_available() else "cpu")
+    args = p.parse_args()
+
+    device = args.device
+    epochs = args.epochs
+
+    # Use split CSV if available
+    csv_path   = config.SPLIT_CSV if os.path.exists(config.SPLIT_CSV) else config.ANNOTATIONS_CSV
+    df         = pd.read_csv(csv_path)
+    has_split  = "split" in df.columns
+
+    train_loader = make_loader(csv_path, "train" if has_split else None,
+                               config.PROCESSED_DIR, config.BATCH_SIZE)
+    val_loader   = (make_loader(csv_path, "val", config.PROCESSED_DIR, config.BATCH_SIZE)
+                    if has_split else None)
+
     results = []
-    
-    # Config 1: Image only
-    results.append(run_experiment('Image Only', use_text=False, use_color=False))
-    
-    # Config 2: Image + Text
-    results.append(run_experiment('Image + Text', use_text=True, use_color=False))
-    
-    # Config 3: Image + Color
-    results.append(run_experiment('Image + Color', use_text=False, use_color=True))
-    
-    # Config 4: Image + Text + Color (Full)
-    results.append(run_experiment('Image + Text + Color', use_text=True, use_color=True))
-    
+    configs = [
+        ("Image Only",          False, False),
+        ("Image + Text",        True,  False),
+        ("Image + Color",       False, True),
+        ("Image + Text + Color", True,  True),
+    ]
+
+    for name, use_text, use_color in configs:
+        r = run_experiment(name, use_text, use_color, epochs,
+                           train_loader, val_loader, device)
+        results.append(r)
+
     # Save results
-    df = pd.DataFrame(results)
-    df.to_csv('experiments/results.csv', index=False)
+    os.makedirs(config.EXPERIMENTS_DIR, exist_ok=True)
+    results_path = os.path.join(config.EXPERIMENTS_DIR, "results.csv")
+    df_results = pd.DataFrame(results)
+    df_results.to_csv(results_path, index=False)
+
     print("\n" + "="*60)
     print("ABLATION RESULTS SUMMARY")
     print("="*60)
-    print(df.to_string(index=False))
-    print("\nResults saved to experiments/results.csv")
+    print(df_results.to_string(index=False))
+    print(f"\nResults saved to {results_path}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,661 @@
+image,emotion,text,source,split
+mycomic.pdf_p0009_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0010_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_5.jpg,neutral,ESS,auto_ocr_sentiment,train
+mycomic.pdf_p0014_panel_1.jpg,anger,"I TOOK A DEEP BREATH AND FELT
+BUTTERFLIES' WINGS TOUCHING MY FACE
+
+ 
+
+MY BODY RELAXED
+
+—s wn»",auto_ocr_sentiment,train
+mycomic.pdf_p0010_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0008_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0016_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0009_panel_3.jpg,neutral,"I'LL HEAD BACK TO THE PARK.
+HOPEFULLY I HAVEN'T MISSED
+THE SHUTTLE-",auto_ocr_sentiment,train
+mycomic.pdf_p0009_panel_3.jpg,neutral,"I'LL HEAD BACK TO THE PARK.
+HOPEFULLY I HAVEN'T MISSED
+THE SHUTTLE-",auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0001_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_10.jpg,neutral,"IT FEELS EERIE WITHOUT OTHER PEOPLE. IT'S
+LIKE IT WAS COMPLETELY ABANDONED-",auto_ocr_sentiment,train
+mycomic.pdf_p0017_panel_4.jpg,neutral,"wot
+
+ 
+
+A FRESH START.--
+
+aaa",auto_ocr_sentiment,train
+mycomic.pdf_p0014_panel_4.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_13.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0002_panel_4.jpg,anger,AN OLD POSTCARD FELL OUT OF MY POCKET,auto_ocr_sentiment,train
+mycomic.pdf_p0004_panel_3.jpg,joy,TIMES SQUARE,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_19.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_11.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0001_panel_4.jpg,neutral,"17S IT MORNING?
+DID I FALL ASLEEP IN CENTRAL
+PARK?",auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_16.jpg,neutral,he 7,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_14.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0004_panel_4.jpg,neutral,GRAND CENTRAL STATION,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0004_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0012_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0001_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0015_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_8.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0010_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0015_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_7.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0015_panel_5.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_4.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0013_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0008_panel_0.jpg,neutral,"NOBODY IS HERE TO PAy- Tee
+WORRY ABOUT THAT a —_
+
+om",auto_ocr_sentiment,train
+mycomic.pdf_p0004_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0002_panel_4.jpg,neutral,AN OLD POSTCARD FELL OUT OF MY POCKET,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_17.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0008_panel_2.jpg,surprise,". AM!  , S64
+N WELL, THESE ARE NICER THAN THE TATTY
+OLD CLOTHES I'M WEARING
+
+a a
+
+ty",auto_ocr_sentiment,train
+mycomic.pdf_p0001_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_9.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0011_panel_1.jpg,joy,"SS
+ZARYA
+IS FEELING
+FEAR, CURIOSITY
+AND LONGING.
+
+- AM) THE PERFECT WORLD
+\ M) TO VISIT TODAY IS...
+ZATURA WORLD
+ra S
+ae »",auto_ocr_sentiment,train
+mycomic.pdf_p0011_panel_2.jpg,anger,"WHAT
+HAPPENED TO
+EVERYONE?
+
+MENTAL HEALTH
+CRISIS IN 2023 LED TO
+ALMOST COMPLETE
+DESTRUCTION OF LIFE
+ON EARTH-",auto_ocr_sentiment,train
+mycomic.pdf_p0010_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0011_panel_3.jpg,neutral,"WELCOME, ZARYA
+I'M RAYA, YOUR INTER-WORLD
+ASSISTANT. I'M OPERATED BY
+YOUR EMOTIONS. WHERE DO YOU
+FEEL LIKE GOING?",auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_6.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0004_panel_3.jpg,neutral,TIMES SQUARE,auto_ocr_sentiment,train
+mycomic.pdf_p0003_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_5.jpg,neutral,ESS,auto_ocr_sentiment,train
+mycomic.pdf_p0002_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0007_panel_1.jpg,anger,"26 QUGUST, 2023: ""TT IS
+GETTING HARDER TO BREATHE.
+I'LL STAY IN CENTRAL PARK
+AND WAIT FOR THE SHUTTLE""",auto_ocr_sentiment,train
+mycomic.pdf_p0001_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0015_panel_6.jpg,anger,"I WON'T FIGHT WITH MY THOUGHTS AND FEELINGS
+Ns ANYMORE, I'LL LET THEM COME AND GO
+
+Se Ae . Oo",auto_ocr_sentiment,train
+mycomic.pdf_p0005_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_6.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0012_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0013_panel_4.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0015_panel_5.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0004_panel_4.jpg,joy,GRAND CENTRAL STATION,auto_ocr_sentiment,train
+mycomic.pdf_p0015_panel_1.jpg,joy,"SHE TAUGHT ME TO ACCEPT LIFE AS |S
+
+ae",auto_ocr_sentiment,train
+mycomic.pdf_p0015_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_9.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0002_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_14.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_9.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0005_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0004_panel_3.jpg,neutral,TIMES SQUARE,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_22.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0012_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0016_panel_3.jpg,sadness,"a 7 a
+SHE |S GONE | BUT SHE LEFT MEA GIFT
+
+rs oe",auto_ocr_sentiment,train
+mycomic.pdf_p0002_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0005_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_24.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0001_panel_4.jpg,anger,"17S IT MORNING?
+DID I FALL ASLEEP IN CENTRAL
+PARK?",auto_ocr_sentiment,train
+mycomic.pdf_p0011_panel_3.jpg,neutral,"WELCOME, ZARYA
+I'M RAYA, YOUR INTER-WORLD
+ASSISTANT. I'M OPERATED BY
+YOUR EMOTIONS. WHERE DO YOU
+FEEL LIKE GOING?",auto_ocr_sentiment,train
+mycomic.pdf_p0015_panel_4.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0013_panel_1.jpg,anger,"“ie
+ANOTHER PERSON? Ts SHE REAL? ah :
+
+oa
+
+ 
+
+Ss
+aa a ar
+ae /",auto_ocr_sentiment,train
+mycomic.pdf_p0010_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_8.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0014_panel_4.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0013_panel_4.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0017_panel_4.jpg,anger,"wot
+
+ 
+
+A FRESH START.--
+
+aaa",auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_7.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_8.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_5.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0007_panel_2.jpg,neutral,"y
+WW)
+S
+~)
+Ww
+2",auto_ocr_sentiment,train
+mycomic.pdf_p0013_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0017_panel_2.jpg,neutral,ACCEPTANCE IS THE FIRST STEP--,auto_ocr_sentiment,train
+mycomic.pdf_p0009_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_14.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_8.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0001_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0013_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0016_panel_1.jpg,neutral,"I FOUND MORE QUESTIONS THAN ANSWERS.- BUT
+- [IF IT NO LONGER SEEK TO BE IN CONTROL, I CAN
+| FINALLY ENJOY THE RIDE-",auto_ocr_sentiment,train
+mycomic.pdf_p0012_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0010_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_4.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0017_panel_1.jpg,neutral,"9
+AA
+b
+Bw
+am
+w
+X
+r",auto_ocr_sentiment,train
+mycomic.pdf_p0005_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_20.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0009_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_10.jpg,neutral,"IT FEELS EERIE WITHOUT OTHER PEOPLE. IT'S
+LIKE IT WAS COMPLETELY ABANDONED-",auto_ocr_sentiment,train
+mycomic.pdf_p0008_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0011_panel_2.jpg,neutral,"WHAT
+HAPPENED TO
+EVERYONE?
+
+MENTAL HEALTH
+CRISIS IN 2023 LED TO
+ALMOST COMPLETE
+DESTRUCTION OF LIFE
+ON EARTH-",auto_ocr_sentiment,train
+mycomic.pdf_p0004_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_7.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0005_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_6.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0011_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0014_panel_4.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0005_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0016_panel_2.jpg,joy,"ZARYA IS
+FEELING
+ACCEPTANCE
+
+DESTINATION:
+CENTRAL PARK,
+NEW YORK",auto_ocr_sentiment,train
+mycomic.pdf_p0011_panel_1.jpg,joy,"SS
+ZARYA
+IS FEELING
+FEAR, CURIOSITY
+AND LONGING.
+
+- AM) THE PERFECT WORLD
+\ M) TO VISIT TODAY IS...
+ZATURA WORLD
+ra S
+ae »",auto_ocr_sentiment,train
+mycomic.pdf_p0015_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0015_panel_1.jpg,disgust,"SHE TAUGHT ME TO ACCEPT LIFE AS |S
+
+ae",auto_ocr_sentiment,train
+mycomic.pdf_p0010_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_5.jpg,joy,ESS,auto_ocr_sentiment,train
+mycomic.pdf_p0015_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_7.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_20.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_12.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0004_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0013_panel_1.jpg,surprise,"“ie
+ANOTHER PERSON? Ts SHE REAL? ah :
+
+oa
+
+ 
+
+Ss
+aa a ar
+ae /",auto_ocr_sentiment,train
+mycomic.pdf_p0015_panel_5.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0010_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0003_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0014_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0003_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0013_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0013_panel_4.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_4.jpg,anger,T',auto_ocr_sentiment,train
+mycomic.pdf_p0014_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0015_panel_4.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0015_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0015_panel_4.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0013_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_23.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0002_panel_3.jpg,anger,"t REMEMBER My >
+AME? T'LL TRY TO
+ND THIS RUSTY",auto_ocr_sentiment,train
+mycomic.pdf_p0013_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_10.jpg,anger,"IT FEELS EERIE WITHOUT OTHER PEOPLE. IT'S
+LIKE IT WAS COMPLETELY ABANDONED-",auto_ocr_sentiment,train
+mycomic.pdf_p0004_panel_5.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0009_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_15.jpg,neutral,MIDJOURNEY,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0015_panel_6.jpg,joy,"I WON'T FIGHT WITH MY THOUGHTS AND FEELINGS
+Ns ANYMORE, I'LL LET THEM COME AND GO
+
+Se Ae . Oo",auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_12.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0017_panel_2.jpg,neutral,ACCEPTANCE IS THE FIRST STEP--,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0001_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0004_panel_0.jpg,anger,"mM
+2
+Y
+ws
+S
+iy
+Ke)
+Ww
+Ww
+x
+2",auto_ocr_sentiment,train
+mycomic.pdf_p0007_panel_1.jpg,anger,"26 QUGUST, 2023: ""TT IS
+GETTING HARDER TO BREATHE.
+I'LL STAY IN CENTRAL PARK
+AND WAIT FOR THE SHUTTLE""",auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_17.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0012_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_9.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_10.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_24.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0017_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0013_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0017_panel_5.jpg,surprise,"b eed s
+
+, CENTRAL PARK HAS CHANGED SINCE I WAS GONE",auto_ocr_sentiment,train
+mycomic.pdf_p0016_panel_3.jpg,anger,"a 7 a
+SHE |S GONE | BUT SHE LEFT MEA GIFT
+
+rs oe",auto_ocr_sentiment,train
+mycomic.pdf_p0007_panel_0.jpg,neutral,"HOW CAN I
+REMEMBER MY WAY
+AROUND THE CITY, BUT NOT
+KNOW ANYTHING ABOUT
+MYSELF?",auto_ocr_sentiment,train
+mycomic.pdf_p0001_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_19.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0017_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0017_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_9.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0001_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_21.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0015_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_5.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_10.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_18.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0003_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0012_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0017_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_20.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0004_panel_5.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_18.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0012_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0014_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0009_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0003_panel_1.jpg,neutral,IT MUST BE WHERE T LIVE,auto_ocr_sentiment,train
+mycomic.pdf_p0013_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0009_panel_3.jpg,joy,"I'LL HEAD BACK TO THE PARK.
+HOPEFULLY I HAVEN'T MISSED
+THE SHUTTLE-",auto_ocr_sentiment,train
+mycomic.pdf_p0011_panel_1.jpg,joy,"SS
+ZARYA
+IS FEELING
+FEAR, CURIOSITY
+AND LONGING.
+
+- AM) THE PERFECT WORLD
+\ M) TO VISIT TODAY IS...
+ZATURA WORLD
+ra S
+ae »",auto_ocr_sentiment,train
+mycomic.pdf_p0014_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0013_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0005_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0013_panel_1.jpg,surprise,"“ie
+ANOTHER PERSON? Ts SHE REAL? ah :
+
+oa
+
+ 
+
+Ss
+aa a ar
+ae /",auto_ocr_sentiment,train
+mycomic.pdf_p0016_panel_1.jpg,joy,"I FOUND MORE QUESTIONS THAN ANSWERS.- BUT
+- [IF IT NO LONGER SEEK TO BE IN CONTROL, I CAN
+| FINALLY ENJOY THE RIDE-",auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0012_panel_0.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_16.jpg,joy,he 7,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_21.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0004_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0002_panel_3.jpg,anger,"t REMEMBER My >
+AME? T'LL TRY TO
+ND THIS RUSTY",auto_ocr_sentiment,train
+mycomic.pdf_p0008_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0003_panel_1.jpg,anger,IT MUST BE WHERE T LIVE,auto_ocr_sentiment,train
+mycomic.pdf_p0017_panel_1.jpg,neutral,"9
+AA
+b
+Bw
+am
+w
+X
+r",auto_ocr_sentiment,train
+mycomic.pdf_p0009_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_2.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_17.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0007_panel_1.jpg,anger,"26 QUGUST, 2023: ""TT IS
+GETTING HARDER TO BREATHE.
+I'LL STAY IN CENTRAL PARK
+AND WAIT FOR THE SHUTTLE""",auto_ocr_sentiment,train
+mycomic.pdf_p0004_panel_5.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0008_panel_2.jpg,joy,". AM!  , S64
+N WELL, THESE ARE NICER THAN THE TATTY
+OLD CLOTHES I'M WEARING
+
+a a
+
+ty",auto_ocr_sentiment,train
+mycomic.pdf_p0008_panel_2.jpg,surprise,". AM!  , S64
+N WELL, THESE ARE NICER THAN THE TATTY
+OLD CLOTHES I'M WEARING
+
+a a
+
+ty",auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_12.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0014_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_5.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0014_panel_1.jpg,joy,"I TOOK A DEEP BREATH AND FELT
+BUTTERFLIES' WINGS TOUCHING MY FACE
+
+ 
+
+MY BODY RELAXED
+
+—s wn»",auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_24.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_3.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0000_panel_1.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0002_panel_3.jpg,anger,"t REMEMBER My >
+AME? T'LL TRY TO
+ND THIS RUSTY",auto_ocr_sentiment,train
+mycomic.pdf_p0006_panel_8.jpg,neutral,,auto_ocr_sentiment,train
+mycomic.pdf_p0004_panel_4.jpg,neutral,GRAND CENTRAL STATION,auto_ocr_sentiment,val
+mycomic.pdf_p0001_panel_0.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0000_panel_21.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0000_panel_19.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0000_panel_0.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0000_panel_0.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0000_panel_3.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0001_panel_1.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0000_panel_9.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0002_panel_0.jpg,neutral,"""MY DEAREST ZARYA,
+
+A LOOKING FORWARD TO
+OUR NEXT ADVENTURE,
+Rusty""",auto_ocr_sentiment,val
+mycomic.pdf_p0017_panel_5.jpg,surprise,"b eed s
+
+, CENTRAL PARK HAS CHANGED SINCE I WAS GONE",auto_ocr_sentiment,val
+mycomic.pdf_p0002_panel_0.jpg,joy,"""MY DEAREST ZARYA,
+
+A LOOKING FORWARD TO
+OUR NEXT ADVENTURE,
+Rusty""",auto_ocr_sentiment,val
+mycomic.pdf_p0003_panel_2.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0015_panel_0.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0001_panel_4.jpg,neutral,"17S IT MORNING?
+DID I FALL ASLEEP IN CENTRAL
+PARK?",auto_ocr_sentiment,val
+mycomic.pdf_p0017_panel_4.jpg,neutral,"wot
+
+ 
+
+A FRESH START.--
+
+aaa",auto_ocr_sentiment,val
+mycomic.pdf_p0015_panel_2.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0016_panel_2.jpg,joy,"ZARYA IS
+FEELING
+ACCEPTANCE
+
+DESTINATION:
+CENTRAL PARK,
+NEW YORK",auto_ocr_sentiment,val
+mycomic.pdf_p0003_panel_1.jpg,neutral,IT MUST BE WHERE T LIVE,auto_ocr_sentiment,val
+mycomic.pdf_p0000_panel_11.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0012_panel_2.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0000_panel_13.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0017_panel_5.jpg,anger,"b eed s
+
+, CENTRAL PARK HAS CHANGED SINCE I WAS GONE",auto_ocr_sentiment,val
+mycomic.pdf_p0016_panel_3.jpg,sadness,"a 7 a
+SHE |S GONE | BUT SHE LEFT MEA GIFT
+
+rs oe",auto_ocr_sentiment,val
+mycomic.pdf_p0003_panel_0.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0016_panel_1.jpg,neutral,"I FOUND MORE QUESTIONS THAN ANSWERS.- BUT
+- [IF IT NO LONGER SEEK TO BE IN CONTROL, I CAN
+| FINALLY ENJOY THE RIDE-",auto_ocr_sentiment,val
+mycomic.pdf_p0007_panel_2.jpg,anger,"y
+WW)
+S
+~)
+Ww
+2",auto_ocr_sentiment,val
+mycomic.pdf_p0000_panel_23.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0000_panel_18.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0000_panel_4.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0006_panel_4.jpg,neutral,T',auto_ocr_sentiment,val
+mycomic.pdf_p0016_panel_2.jpg,joy,"ZARYA IS
+FEELING
+ACCEPTANCE
+
+DESTINATION:
+CENTRAL PARK,
+NEW YORK",auto_ocr_sentiment,val
+mycomic.pdf_p0001_panel_2.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0014_panel_2.jpg,surprise,"YOU ARE
+EXACTLY WHERE
+YOU NEED TO",auto_ocr_sentiment,val
+mycomic.pdf_p0006_panel_8.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0006_panel_3.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0000_panel_10.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0001_panel_1.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0006_panel_6.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0009_panel_0.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0011_panel_2.jpg,neutral,"WHAT
+HAPPENED TO
+EVERYONE?
+
+MENTAL HEALTH
+CRISIS IN 2023 LED TO
+ALMOST COMPLETE
+DESTRUCTION OF LIFE
+ON EARTH-",auto_ocr_sentiment,val
+mycomic.pdf_p0006_panel_11.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0014_panel_1.jpg,anger,"I TOOK A DEEP BREATH AND FELT
+BUTTERFLIES' WINGS TOUCHING MY FACE
+
+ 
+
+MY BODY RELAXED
+
+—s wn»",auto_ocr_sentiment,val
+mycomic.pdf_p0006_panel_0.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0000_panel_13.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0000_panel_15.jpg,joy,MIDJOURNEY,auto_ocr_sentiment,val
+mycomic.pdf_p0002_panel_2.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0012_panel_2.jpg,neutral,,auto_ocr_sentiment,val
+mycomic.pdf_p0007_panel_2.jpg,neutral,"y
+WW)
+S
+~)
+Ww
+2",auto_ocr_sentiment,test
+mycomic.pdf_p0006_panel_0.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0012_panel_1.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0000_panel_6.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0006_panel_4.jpg,neutral,T',auto_ocr_sentiment,test
+mycomic.pdf_p0000_panel_22.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0014_panel_2.jpg,surprise,"YOU ARE
+EXACTLY WHERE
+YOU NEED TO",auto_ocr_sentiment,test
+mycomic.pdf_p0002_panel_0.jpg,neutral,"""MY DEAREST ZARYA,
+
+A LOOKING FORWARD TO
+OUR NEXT ADVENTURE,
+Rusty""",auto_ocr_sentiment,test
+mycomic.pdf_p0006_panel_11.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0000_panel_15.jpg,neutral,MIDJOURNEY,auto_ocr_sentiment,test
+mycomic.pdf_p0017_panel_1.jpg,anger,"9
+AA
+b
+Bw
+am
+w
+X
+r",auto_ocr_sentiment,test
+mycomic.pdf_p0007_panel_0.jpg,neutral,"HOW CAN I
+REMEMBER MY WAY
+AROUND THE CITY, BUT NOT
+KNOW ANYTHING ABOUT
+MYSELF?",auto_ocr_sentiment,test
+mycomic.pdf_p0015_panel_6.jpg,anger,"I WON'T FIGHT WITH MY THOUGHTS AND FEELINGS
+Ns ANYMORE, I'LL LET THEM COME AND GO
+
+Se Ae . Oo",auto_ocr_sentiment,test
+mycomic.pdf_p0016_panel_0.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0002_panel_4.jpg,neutral,AN OLD POSTCARD FELL OUT OF MY POCKET,auto_ocr_sentiment,test
+mycomic.pdf_p0008_panel_0.jpg,anger,"NOBODY IS HERE TO PAy- Tee
+WORRY ABOUT THAT a —_
+
+om",auto_ocr_sentiment,test
+mycomic.pdf_p0012_panel_0.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0009_panel_0.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0017_panel_0.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0007_panel_0.jpg,anger,"HOW CAN I
+REMEMBER MY WAY
+AROUND THE CITY, BUT NOT
+KNOW ANYTHING ABOUT
+MYSELF?",auto_ocr_sentiment,test
+mycomic.pdf_p0005_panel_0.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0002_panel_2.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0000_panel_11.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0014_panel_2.jpg,joy,"YOU ARE
+EXACTLY WHERE
+YOU NEED TO",auto_ocr_sentiment,test
+mycomic.pdf_p0006_panel_11.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0000_panel_3.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0017_panel_2.jpg,joy,ACCEPTANCE IS THE FIRST STEP--,auto_ocr_sentiment,test
+mycomic.pdf_p0011_panel_3.jpg,joy,"WELCOME, ZARYA
+I'M RAYA, YOUR INTER-WORLD
+ASSISTANT. I'M OPERATED BY
+YOUR EMOTIONS. WHERE DO YOU
+FEEL LIKE GOING?",auto_ocr_sentiment,test
+mycomic.pdf_p0002_panel_1.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0011_panel_0.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0006_panel_7.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0000_panel_16.jpg,neutral,he 7,auto_ocr_sentiment,test
+mycomic.pdf_p0004_panel_0.jpg,neutral,"mM
+2
+Y
+ws
+S
+iy
+Ke)
+Ww
+Ww
+x
+2",auto_ocr_sentiment,test
+mycomic.pdf_p0005_panel_1.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0000_panel_23.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0004_panel_2.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0000_panel_7.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0000_panel_22.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0008_panel_0.jpg,neutral,"NOBODY IS HERE TO PAy- Tee
+WORRY ABOUT THAT a —_
+
+om",auto_ocr_sentiment,test
+mycomic.pdf_p0015_panel_1.jpg,disgust,"SHE TAUGHT ME TO ACCEPT LIFE AS |S
+
+ae",auto_ocr_sentiment,test
+mycomic.pdf_p0014_panel_0.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0011_panel_0.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0010_panel_2.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0004_panel_0.jpg,neutral,"mM
+2
+Y
+ws
+S
+iy
+Ke)
+Ww
+Ww
+x
+2",auto_ocr_sentiment,test
+mycomic.pdf_p0009_panel_2.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0016_panel_0.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0000_panel_6.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0000_panel_1.jpg,neutral,,auto_ocr_sentiment,test
+mycomic.pdf_p0017_panel_3.jpg,neutral,,auto_ocr_sentiment,test

@@ -1,125 +1,135 @@
 """
-Inference script for comic emotion classification
-Load encoders + fusion model, preprocess one image, print predicted class
+Inference script for Comic Emotion Classification — plan §19.
+
+Load encoders + fusion model, preprocess one image, print predicted class.
+
+Usage:
+    python inference.py path/to/panel.jpg
+    python inference.py path/to/panel.jpg --text "I hate this!"
+    python inference.py path/to/panel.jpg --checkpoint checkpoints/epoch_09.pt
 """
+import sys
+import os
+import argparse
 import torch
 import cv2
 import numpy as np
 from PIL import Image
-import argparse
-import sys
 
+import config
 from models.image_encoder import ImageEncoder
 from models.text_encoder import TextEncoder
-from models.fusion_model import FusionModel
+from models.fusion_model import AttnFusion
 from features.color_features import hsv_hist
 
-# Label mapping (reverse of label_map in dataset.py)
-IDX_TO_LABEL = {0: "anger", 1: "sadness", 2: "joy", 3: "fear", 4: "neutral"}
+
+def find_latest_checkpoint(ckpt_dir=config.CHECKPOINTS_DIR):
+    ckpts = sorted([f for f in os.listdir(ckpt_dir) if f.endswith(".pt")])
+    if not ckpts:
+        raise FileNotFoundError(f"No checkpoints in {ckpt_dir}. Train the model first.")
+    return os.path.join(ckpt_dir, ckpts[-1])
 
 
-def load_model(checkpoint_path, device="cuda"):
-    """Load trained fusion model"""
-    model = FusionModel().to(device)
-    model.load_state_dict(torch.load(checkpoint_path, map_location=device))
+def load_models(checkpoint_path, device):
+    model   = AttnFusion(d=config.D_ATTN, n_cls=config.N_CLS).to(device)
+    img_enc = ImageEncoder(device)
+    txt_enc = TextEncoder(device)
+
+    ckpt = torch.load(checkpoint_path, map_location=device)
+    if isinstance(ckpt, dict) and "model" in ckpt:
+        model.load_state_dict(ckpt["model"])
+        if "img_enc" in ckpt: img_enc.load_state_dict(ckpt["img_enc"])
+        if "txt_enc" in ckpt: txt_enc.load_state_dict(ckpt["txt_enc"])
+    else:
+        model.load_state_dict(ckpt)
+
     model.eval()
-    return model
+    img_enc.eval()
+    txt_enc.eval()
+    return model, img_enc, txt_enc
 
 
 def preprocess_image(image_path):
-    """Load and preprocess image for inference"""
-    # Load with OpenCV
     img = cv2.imread(image_path)
     if img is None:
         raise ValueError(f"Could not load image: {image_path}")
-    
-    # Convert BGR to RGB
     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    
-    # Convert to PIL for CLIP processor
     pil_img = Image.fromarray(img_rgb)
-    
     return img_rgb, pil_img
 
 
-def predict(image_path, text="", checkpoint_path="checkpoints/epoch_9.pt", device="cuda"):
+def predict(image_path, text="", checkpoint_path=None, device=None):
     """
-    Run inference on a single comic panel
-    
-    Args:
-        image_path: Path to the comic panel image
-        text: Optional dialogue text
-        checkpoint_path: Path to trained model checkpoint
-        device: 'cuda' or 'cpu'
-    
+    Run inference on a single comic panel.
+
     Returns:
-        Predicted emotion label and confidence scores
+        (label: str, confidence: float, class_probs: dict)
     """
-    # Load encoders and model
-    img_enc = ImageEncoder(device)
-    txt_enc = TextEncoder(device)
-    model = load_model(checkpoint_path, device)
-    
-    # Preprocess image
+    if device is None:
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+    if checkpoint_path is None:
+        checkpoint_path = find_latest_checkpoint()
+
+    model, img_enc, txt_enc = load_models(checkpoint_path, device)
+
     img_rgb, pil_img = preprocess_image(image_path)
-    
-    # Extract features
+
     with torch.no_grad():
-        img_feat = img_enc([pil_img])
-        txt_feat = txt_enc([text])
-        col_feat = hsv_hist(img_rgb).unsqueeze(0).to(device)
-        
-        # Get prediction
+        img_feat = img_enc([pil_img])                         # (1, 512)
+        txt_feat = txt_enc([text])                            # (1, 768)
+        col_feat = hsv_hist(img_rgb).unsqueeze(0).to(device)  # (1, 48)
+
         outputs = model(img_feat, txt_feat, col_feat)
-        probs = torch.softmax(outputs, dim=1)
-        pred_idx = torch.argmax(probs, dim=1).item()
-        confidence = probs[0][pred_idx].item()
-    
-    predicted_label = IDX_TO_LABEL[pred_idx]
-    
-    # Get all class probabilities
-    class_probs = {IDX_TO_LABEL[i]: probs[0][i].item() for i in range(5)}
-    
-    return predicted_label, confidence, class_probs
+        probs   = torch.softmax(outputs, dim=1)[0]
+        pred_idx = probs.argmax().item()
+
+    label      = config.IDX_TO_LABEL[pred_idx]
+    confidence = probs[pred_idx].item()
+    class_probs = {config.IDX_TO_LABEL[i]: probs[i].item() for i in range(config.N_CLS)}
+
+    return label, confidence, class_probs
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Comic Emotion Classification Inference")
-    parser.add_argument("image", type=str, help="Path to comic panel image")
-    parser.add_argument("--text", type=str, default="", help="Optional dialogue text")
-    parser.add_argument("--checkpoint", type=str, default="checkpoints/epoch_9.pt", 
-                        help="Path to model checkpoint")
-    parser.add_argument("--device", type=str, default="cuda", choices=["cuda", "cpu"],
-                        help="Device to run inference on")
-    
-    args = parser.parse_args()
-    
-    # Check CUDA availability
-    if args.device == "cuda" and not torch.cuda.is_available():
-        print("CUDA not available, falling back to CPU")
-        args.device = "cpu"
-    
-    print(f"\nRunning inference on: {args.image}")
-    print(f"Text: '{args.text}'")
-    print("-" * 50)
-    
+    p = argparse.ArgumentParser(description="Comic Emotion Classification — Inference")
+    p.add_argument("image", type=str, help="Path to comic panel image")
+    p.add_argument("--text", type=str, default="", help="Optional dialogue text")
+    p.add_argument("--checkpoint", type=str, default=None,
+                   help="Checkpoint path (defaults to latest in checkpoints/)")
+    p.add_argument("--device", type=str, default=None,
+                   choices=["cuda", "cpu"],
+                   help="Device (auto-detected if not specified)")
+    args = p.parse_args()
+
+    # Auto-select device
+    if args.device is None:
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+    elif args.device == "cuda" and not torch.cuda.is_available():
+        print("CUDA not available — falling back to CPU")
+        device = "cpu"
+    else:
+        device = args.device
+
+    ckpt = args.checkpoint or find_latest_checkpoint()
+
+    print(f"\nRunning inference on : {args.image}")
+    print(f"Dialogue text        : '{args.text}'")
+    print(f"Checkpoint           : {ckpt}")
+    print(f"Device               : {device}")
+    print("-" * 55)
+
     try:
-        label, conf, probs = predict(
-            args.image, 
-            args.text, 
-            args.checkpoint, 
-            args.device
-        )
-        
-        print(f"\nPredicted Emotion: {label.upper()}")
-        print(f"Confidence: {conf:.4f}")
+        label, conf, probs = predict(args.image, args.text, ckpt, device)
+
+        print(f"\nPredicted Emotion : {label.upper()}")
+        print(f"Confidence        : {conf:.4f}")
         print("\nClass Probabilities:")
         for emotion, prob in sorted(probs.items(), key=lambda x: x[1], reverse=True):
             bar = "█" * int(prob * 20)
-            print(f"  {emotion:10s}: {prob:.4f} {bar}")
-        
+            print(f"  {emotion:10s}: {prob:.4f}  {bar}")
+
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"\nError: {e}")
         sys.exit(1)
 
 

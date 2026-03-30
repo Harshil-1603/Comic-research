@@ -1,0 +1,32 @@
+# Virtual Environments
+venv/
+env/
+.env
+.venv/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Data & Large Files
+data/raw/
+data/processed/
+data/source/
+# (we keep data/annotations.csv and data/annotations_split.csv so the dataset metadata is saved)
+
+# Checkpoints & Logs
+checkpoints/
+logs/
+experiments/results.csv
+
+# OS & IDE
+.vscode/
+.idea/
+.DS_Store
+*.swp

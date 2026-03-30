@@ -1,55 +1,99 @@
 """
-Stratified train/val/test split (70/15/15)
+Stratified train/val/test split (70/15/15) — plan §17.
+
+Output: data/annotations_split.csv  (adds a 'split' column)
+
+Usage:
+    python utils/split_data.py
+    python utils/split_data.py --csv data/annotations.csv
 """
+import sys
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+
+import argparse
 import pandas as pd
 from sklearn.model_selection import train_test_split
-import os
+
+import config
 
 
-def split_data(csv_path, output_dir="data/processed", train_ratio=0.7, val_ratio=0.15, test_ratio=0.15, seed=42):
+def split_data(csv_path=config.ANNOTATIONS_CSV,
+               output_path=config.SPLIT_CSV,
+               train_ratio=config.TRAIN_RATIO,
+               val_ratio=config.VAL_RATIO,
+               test_ratio=config.TEST_RATIO,
+               seed=config.SEED):
     """
     Split annotations into train/val/test with stratification.
-    Default split: 70/15/15
+    Writes a new CSV with an added 'split' column.
     """
-    assert abs(train_ratio + val_ratio + test_ratio - 1.0) < 1e-6, "Ratios must sum to 1.0"
-    
+    assert abs(train_ratio + val_ratio + test_ratio - 1.0) < 1e-6, \
+        "Ratios must sum to 1.0"
+
     df = pd.read_csv(csv_path)
-    
-    # First split: separate test set
-    train_val, test = train_test_split(
-        df, test_size=test_ratio, stratify=df['emotion'], random_state=seed
-    )
-    
-    # Second split: separate train and val
+    if len(df) == 0:
+        raise ValueError("annotations.csv is empty — annotate some panels first.")
+
+    # Validate emotions
+    valid = set(config.LABEL_MAP.keys())
+    bad = df[~df["emotion"].isin(valid)]
+    if len(bad):
+        raise ValueError(f"Unknown emotion labels: {bad['emotion'].unique()}")
+
+    # Split: test out first
+    try:
+        train_val, test = train_test_split(
+            df, test_size=test_ratio, stratify=df["emotion"], random_state=seed
+        )
+    except ValueError:
+        print("  ⚠  Warning: Too few samples for stratified test split. Falling back to random split.")
+        train_val, test = train_test_split(
+            df, test_size=test_ratio, random_state=seed
+        )
+
+    # Split: val from train_val
     val_size = val_ratio / (train_ratio + val_ratio)
-    train, val = train_test_split(
-        train_val, test_size=val_size, stratify=train_val['emotion'], random_state=seed
-    )
-    
-    # Add split column
-    train['split'] = 'train'
-    val['split'] = 'val'
-    test['split'] = 'test'
-    
-    # Combine and save
-    combined = pd.concat([train, val, test])
-    output_path = os.path.join(output_dir, 'annotations_split.csv')
+    try:
+        train, val = train_test_split(
+            train_val, test_size=val_size, stratify=train_val["emotion"], random_state=seed
+        )
+    except ValueError:
+        print("  ⚠  Warning: Too few samples for stratified val split. Falling back to random split.")
+        train, val = train_test_split(
+            train_val, test_size=val_size, random_state=seed
+        )
+
+    train = train.copy(); train["split"] = "train"
+    val   = val.copy();   val["split"]   = "val"
+    test  = test.copy();  test["split"]  = "test"
+
+    combined = pd.concat([train, val, test]).reset_index(drop=True)
+    os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
     combined.to_csv(output_path, index=False)
-    
-    # Print statistics
-    print(f"Data split saved to {output_path}")
+
+    n = len(df)
+    print(f"Split CSV saved to {output_path}")
     print(f"\nSplit sizes:")
-    print(f"  Train: {len(train)} ({len(train)/len(df)*100:.1f}%)")
-    print(f"  Val:   {len(val)} ({len(val)/len(df)*100:.1f}%)")
-    print(f"  Test:  {len(test)} ({len(test)/len(df)*100:.1f}%)")
-    print(f"\nClass distribution per split:")
-    for split_name in ['train', 'val', 'test']:
+    print(f"  Train : {len(train):4d}  ({len(train)/n*100:.1f}%)")
+    print(f"  Val   : {len(val):4d}  ({len(val)/n*100:.1f}%)")
+    print(f"  Test  : {len(test):4d}  ({len(test)/n*100:.1f}%)")
+    print("\nClass distribution per split:")
+    for split_name in ["train", "val", "test"]:
+        sub = combined[combined["split"] == split_name]
         print(f"\n{split_name.upper()}:")
-        split_df = combined[combined['split'] == split_name]
-        print(split_df['emotion'].value_counts().sort_index())
-    
+        print(sub["emotion"].value_counts().sort_index().to_string())
+
     return combined
 
 
+def main():
+    p = argparse.ArgumentParser(description="Create stratified train/val/test split")
+    p.add_argument("--csv", type=str, default=config.ANNOTATIONS_CSV)
+    p.add_argument("--output", type=str, default=config.SPLIT_CSV)
+    args = p.parse_args()
+    split_data(args.csv, args.output)
+
+
 if __name__ == "__main__":
-    split_data("data/annotations.csv")
+    main()
