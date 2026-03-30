@@ -1,9 +1,116 @@
+# =========================
+
+# PYTHON
+
+# =========================
+
+**pycache**/
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# =========================
+
+# VIRTUAL ENVIRONMENTS
+
+# =========================
+
 venv/
-__pycache__/
-*.py[cod]
-*$py.class
-.env
+.env/
+.envrc/
+
+# =========================
+
+# JUPYTER NOTEBOOKS
+
+# =========================
+
 .ipynb_checkpoints/
-*.pth
+
+# =========================
+
+# DATA (DO NOT COMMIT RAW DATA)
+
+# =========================
+
+data/raw/
+data/processed/
+data/review/
+data/source/
+
+# allow annotations file (important)
+
+!data/annotations.csv
+
+# =========================
+
+# MODEL FILES
+
+# =========================
+
+checkpoints/
 *.pt
-venv
+*.pth
+*.ckpt
+
+# =========================
+
+# LOGS & EXPERIMENTS
+
+# =========================
+
+logs/
+*.log
+experiments/*.csv
+experiments/*.json
+
+# =========================
+
+# CACHE
+
+# =========================
+
+.cache/
+.huggingface/
+*.cache
+
+# =========================
+
+# SYSTEM FILES
+
+# =========================
+
+.DS_Store
+Thumbs.db
+
+# =========================
+
+# IDE FILES
+
+# =========================
+
+.vscode/
+.idea/
+
+# =========================
+
+# STREAMLIT
+
+# =========================
+
+.streamlit/
+
+# =========================
+
+# TEMP FILES
+
+# =========================
+
+*.tmp
+*.swp
+*~
