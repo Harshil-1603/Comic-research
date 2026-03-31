@@ -109,27 +109,36 @@ def run(cmd, step_name, fatal=True):
 def step_convert(args):
     banner("Step 1 / 8 — PDF → Raw Images")
 
-    pdf = args.pdf
-    if pdf is None:
+    # Determine which PDFs to convert
+    if args.pdf:
+        pdfs = [args.pdf]
+    else:
         pdfs = sorted(glob.glob("data/source/*.pdf"))
         if not pdfs:
-            warn("No PDF found in data/source/. Skipping convert.")
-            warn("Place a PDF there or use --pdf path/to/file.pdf")
+            warn("No PDFs found in data/source/. Skipping convert.")
+            warn("Place PDFs there or use --pdf path/to/file.pdf")
             return True   # non-fatal — user may already have raw images
-        pdf = pdfs[0]
-        info(f"Auto-detected: {pdf}")
 
-    if not os.path.exists(pdf):
-        fail(f"PDF not found: {pdf}")
-        return False
+    info(f"Found {len(pdfs)} PDF(s) to convert: {[os.path.basename(p) for p in pdfs]}")
 
-    cmd = [
-        sys.executable, "-c",
-        (f"import sys; sys.path.insert(0,'.'); "
-         f"from data.scripts.pdf_to_images import pdf_to_images; "
-         f"pdf_to_images('{pdf}')")
-    ]
-    return run(cmd, "convert")
+    for pdf in pdfs:
+        if not os.path.exists(pdf):
+            fail(f"PDF not found: {pdf}")
+            return False
+
+        info(f"Converting: {pdf}")
+        cmd = [
+            sys.executable, "-c",
+            (f"import sys; sys.path.insert(0,'.'); "
+             f"from data.scripts.pdf_to_images import pdf_to_images; "
+             f"pdf_to_images('{pdf}')")
+        ]
+        success = run(cmd, f"convert({os.path.basename(pdf)})")
+        if not success:
+            return False
+
+    ok(f"All {len(pdfs)} PDF(s) converted.")
+    return True
 
 
 def step_extract(_args):
