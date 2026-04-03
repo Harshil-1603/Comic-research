@@ -32,7 +32,6 @@ import glob
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 
 # ── ANSI colours ─────────────────────────────────────────────────────────────
-
 RESET  = "\033[0m"
 BOLD   = "\033[1m"
 GREEN  = "\033[92m"
@@ -127,11 +126,12 @@ def step_convert(args):
             return False
 
         info(f"Converting: {pdf}")
+        # Pass path as a real argument (never embed in -c string — unsafe for
+        # filenames with spaces, commas, apostrophes, etc.)
         cmd = [
-            sys.executable, "-c",
-            (f"import sys; sys.path.insert(0,'.'); "
-             f"from data.scripts.pdf_to_images import pdf_to_images; "
-             f"pdf_to_images('{pdf}')")
+            sys.executable,
+            "data/scripts/pdf_to_images.py",
+            "--pdf", pdf,
         ]
         success = run(cmd, f"convert({os.path.basename(pdf)})")
         if not success:
