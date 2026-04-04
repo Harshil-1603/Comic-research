@@ -69,9 +69,20 @@ def main():
         print("   Run:  python data/scripts/run_extraction.py  first.")
         sys.exit(1)
 
-    done_set, rows = load_existing(args.output)
+    done_set, old_rows = load_existing(args.output)
+    
+    # Filter out dead rows (images that no longer exist in data/processed)
+    rows = [r for r in old_rows if r["image"] in panels]
+    done_set = {r["image"] for r in rows}
+    
     already = len(done_set)
     to_process = [f for f in panels if args.force or f not in done_set]
+    
+    if args.force:
+        # If forcing, remove the rows we are about to re-process so we don't
+        # create duplicate entries in the final CSV.
+        rows = [r for r in rows if r["image"] not in to_process]
+        already = len(rows)
 
     print(f"\nAuto-Annotation Pipeline")
     print(f"  Input   : {args.input}  ({len(panels)} panels)")
