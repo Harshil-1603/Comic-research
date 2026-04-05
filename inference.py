@@ -19,8 +19,7 @@ from PIL import Image
 import config
 from models.image_encoder import ImageEncoder
 from models.text_encoder import TextEncoder
-from models.fusion_model import AttnFusion
-from features.color_features import hsv_hist
+from models.fusion_model import FusionModel
 
 
 def find_latest_checkpoint(ckpt_dir=config.CHECKPOINTS_DIR):
@@ -31,7 +30,7 @@ def find_latest_checkpoint(ckpt_dir=config.CHECKPOINTS_DIR):
 
 
 def load_models(checkpoint_path, device):
-    model   = AttnFusion(d=config.D_ATTN, n_cls=config.N_CLS).to(device)
+    model   = FusionModel(n_cls=config.N_CLS).to(device)
     img_enc = ImageEncoder(device)
     txt_enc = TextEncoder(device)
 
@@ -77,9 +76,8 @@ def predict(image_path, text="", checkpoint_path=None, device=None):
     with torch.no_grad():
         img_feat = img_enc([pil_img])                         # (1, 512)
         txt_feat = txt_enc([text])                            # (1, 768)
-        col_feat = hsv_hist(img_rgb).unsqueeze(0).to(device)  # (1, 48)
 
-        outputs = model(img_feat, txt_feat, col_feat)
+        outputs = model(img_feat, txt_feat)
         probs   = torch.softmax(outputs, dim=1)[0]
         pred_idx = probs.argmax().item()
 

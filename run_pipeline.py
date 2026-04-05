@@ -204,11 +204,18 @@ def step_split(_args):
 
 
 def step_train(args):
-    banner("Step 5 / 8 — Train Model")
+    banner("Step 5 / 8 — Extract Features & Train Model")
 
     if not os.path.exists("data/annotations_split.csv"):
         warn("No split CSV — training on full dataset (no val metrics).")
 
+    # Offline extraction
+    extract_cmd = [sys.executable, "data/scripts/extract_features.py"]
+    if args.device:
+        extract_cmd += ["--device", args.device]
+    run(extract_cmd, "extract_features")
+
+    # Actual training loop
     cmd = [sys.executable, "train.py", "--epochs", str(args.epochs)]
     if args.device:
         cmd += ["--device", args.device]

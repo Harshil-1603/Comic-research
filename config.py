@@ -20,7 +20,7 @@ VAL_RATIO   = 0.15
 TEST_RATIO  = 0.15
 
 # ── Training ─────────────────────────────────────────────────
-BATCH_SIZE    = 8       # reduced for fine-tuning within 6GB VRAM
+BATCH_SIZE    = 2       # reduced for fine-tuning within 6GB VRAM
 LEARNING_RATE = 1e-4   # fusion head LR
 ENCODER_LR    = 1e-5   # encoder LR (10x smaller to preserve pre-trained weights)
 EPOCHS        = 10

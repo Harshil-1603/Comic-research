@@ -6,6 +6,8 @@ Emotions: anger, disgust, fear, joy, neutral, sadness, surprise
 (exactly matches config.LABEL_MAP)
 """
 from transformers import pipeline
+import warnings
+warnings.filterwarnings("ignore", message="You seem to be using the pipelines sequentially on GPU")
 
 _emotion_pipeline = None
 
